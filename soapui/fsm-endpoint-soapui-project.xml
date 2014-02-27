@@ -1,0 +1,1550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="fsm-endpoint" resourceRoot="" soapui-version="4.6.4" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="FSMEndpointServiceSoapBinding" type="wsdl" bindingName="{http://soap.integration.fsm.comarch.com/}FSMEndpointServiceSoapBinding" soapVersion="1_2" anonymous="optional" definition="file:/home/pablo/switchyard_workspace/fsm-integration/src/main/resources/wsdl/fsm-endpoint.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/pablo/switchyard_workspace/fsm-integration/src/main/resources/wsdl/fsm-endpoint.wsdl"><con:part><con:url>file:/home/pablo/switchyard_workspace/fsm-integration/src/main/resources/wsdl/fsm-endpoint.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="FSMEndpoint" targetNamespace="http://soap.integration.fsm.comarch.com/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://soap.integration.fsm.comarch.com/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://soap.integration.fsm.comarch.com/">
+      <xs:element name="fetchAvailableAppointmentSlots" type="tns:fetchAvailableAppointmentSlots"/>
+      <xs:element name="fetchAvailableAppointmentSlotsResponse" type="tns:fetchAvailableAppointmentSlotsResponse"/>
+      <xs:element name="fetchWorkOrder" type="tns:fetchWorkOrder"/>
+      <xs:element name="fetchWorkOrderResponse" type="tns:fetchWorkOrderResponse"/>
+      <xs:element name="rescheduleTask" type="tns:rescheduleTask"/>
+      <xs:element name="rescheduleTaskResponse" type="tns:rescheduleTaskResponse"/>
+      <xs:element name="createWorkOrder" type="tns:createWorkOrder"/>
+      <xs:element name="createWorkOrderResponse" type="tns:createWorkOrderResponse"/>
+      <xs:element name="createTask" type="tns:createTask"/>
+      <xs:element name="createTaskResponse" type="tns:createTaskResponse"/>
+      <xs:element name="modifyWorkOrder" type="tns:modifyWorkOrder"/>
+      <xs:element name="modifyWorkOrderResponse" type="tns:modifyWorkOrderResponse"/>
+      <xs:element name="cancelWorkOrder" type="tns:cancelWorkOrder"/>
+      <xs:element name="cancelWorkOrderResponse" type="tns:cancelWorkOrderResponse"/>
+      <xs:element name="closeWorkOrder" type="tns:closeWorkOrder"/>
+      <xs:element name="closeWorkOrderResponse" type="tns:closeWorkOrderResponse"/>
+      <xs:element name="cancelTask" type="tns:cancelTask"/>
+      <xs:element name="cancelTaskResponse" type="tns:cancelTaskResponse"/>
+      <xs:complexType name="fetchAvailableAppointmentSlots">
+        <xs:sequence>
+          <xs:element name="query" type="tns:availableSlotsQuery"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="availableSlotsQuery">
+        <xs:sequence>
+          <xs:element name="sourceSystem" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+          <xs:element name="processCreationDate" type="xs:dateTime"/>
+          <xs:element name="orderType" type="xs:string"/>
+          <xs:element name="orderTechnology" type="xs:string"/>
+          <xs:element name="inventory" type="tns:inventory" nillable="true" minOccurs="0"/>
+          <xs:element name="location" type="tns:location"/>
+          <xs:element name="customer" type="tns:customer" nillable="true" minOccurs="0"/>
+          <xs:element name="additionalRequirements" type="tns:additionalRequirements" nillable="true" minOccurs="0"/>
+          <xs:element name="interval" type="tns:timeInterval"/>
+          <xs:element name="additionalTaskTypes" minOccurs="0" type="tns:additionalTaskTypes"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchAvailableAppointmentSlotsResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:availableSlots"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="availableSlots">
+        <xs:sequence>
+          <xs:element name="slots" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="slot" type="tns:slot" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="slot">
+        <xs:sequence>
+          <xs:element name="interval" type="tns:timeInterval"/>
+          <xs:element name="goodness" type="xs:string"/>
+          <xs:element name="variantsQuantity" type="xs:int"/>
+          <xs:element name="fulfillmentPartner" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchWorkOrder">
+        <xs:sequence>
+          <xs:element name="query" type="tns:workOrderQuery"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="workOrderQuery">
+        <xs:sequence>
+          <xs:element name="sourceSystem" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+          <xs:element name="key">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="sourceSystem" type="xs:string" minOccurs="0"/>
+                <xs:choice>
+                  <xs:element name="workOrderId" type="xs:string"/>
+                  <xs:element name="processId" type="xs:string"/>
+                  <xs:element name="processSignature" type="xs:string"/>
+                </xs:choice>
+                <xs:element name="interval" type="tns:timeInterval" minOccurs="0"/>
+                <xs:element name="customer" type="tns:customerQuery" minOccurs="0"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="customerQuery">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="fetchWorkOrderResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:workOrderList"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="workOrderList">
+        <xs:sequence>
+          <xs:element name="workOrder" type="tns:workOrderItem" nillable="false" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="workOrderItem">
+        <xs:sequence>
+          <xs:element name="sourceSystem" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+          <xs:element name="processSignature" type="xs:string"/>
+          <xs:element name="workOrderId" type="xs:string"/>
+          <xs:element name="workOrderURL" type="xs:string" minOccurs="0"/>
+          <xs:element name="status" type="xs:string"/>
+          <xs:element name="tasks" type="tns:tasksList" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tasksList">
+        <xs:sequence>
+          <xs:element name="task" type="tns:taskList" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="taskList">
+        <xs:sequence>
+          <xs:element name="taskId" type="xs:string"/>
+          <xs:element name="status" type="xs:string" minOccurs="0"/>
+          <xs:element name="realizationInterval" type="tns:timeInterval" minOccurs="0"/>
+          <xs:element name="scheduleInterval" type="tns:timeInterval" minOccurs="0"/>
+          <xs:element name="executor" type="tns:assignedExecutor" minOccurs="0"/>
+          <xs:element name="finishDate" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="location" type="tns:location"/>
+          <xs:element name="inventory" type="tns:inventory" minOccurs="0"/>
+          <xs:element name="attributes" type="tns:returnedAttributes" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="returnedAttributes">
+        <xs:sequence>
+          <xs:element name="attribute" type="tns:returnedAttribute" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="returnedAttribute">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string"/>
+          <xs:element name="attrValue" type="tns:returnedAttrValue"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="returnedAttrValue">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string" minOccurs="0"/>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="assignedExecutor">
+        <xs:sequence>
+          <xs:element name="executorId" type="xs:string"/>
+          <xs:element name="executorName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rescheduleTask">
+        <xs:sequence>
+          <xs:element name="query" type="tns:rescheduleTaskQuery"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rescheduleTaskQuery">
+        <xs:sequence>
+          <xs:element name="sourceSystem" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+          <xs:element name="taskId" type="xs:string"/>
+          <xs:element name="slot" type="tns:timeInterval"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="timeInterval">
+        <xs:sequence>
+          <xs:element name="dateFrom" type="xs:dateTime"/>
+          <xs:element name="dateTo" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rescheduleTaskResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="createWorkOrder">
+        <xs:sequence>
+          <xs:element name="query" type="tns:createWorkOrderQuery"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createWorkOrderQuery">
+        <xs:sequence>
+          <xs:element name="workOrderId" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="sourceSystem" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+          <xs:element name="processSignature" type="xs:string"/>
+          <xs:element name="processCreationDate" type="xs:dateTime"/>
+          <xs:element name="orderType" type="xs:string"/>
+          <xs:element name="orderTechnology" type="xs:string"/>
+          <xs:element name="inventory" type="tns:inventory" nillable="true" minOccurs="0"/>
+          <xs:element name="location" type="tns:location"/>
+          <xs:element name="customer" type="tns:customer" nillable="true" minOccurs="0"/>
+          <xs:element name="additionalRequirements" type="tns:additionalRequirements" nillable="true" minOccurs="0"/>
+          <xs:element name="slot" type="tns:timeInterval" minOccurs="0"/>
+          <xs:element name="rangeStart" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="notes" type="tns:notes" minOccurs="0"/>
+          <xs:element name="additionalTaskTypes" minOccurs="0" type="tns:additionalTaskTypes"/>
+          <xs:element name="attributes" minOccurs="0" type="tns:attributes"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createWorkOrderResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:workOrder"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="workOrder">
+        <xs:sequence>
+          <xs:element name="workOrderId" type="xs:string"/>
+          <xs:element name="workOrderURL" type="xs:string" minOccurs="0"/>
+          <xs:element name="tasks" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="task" type="tns:task" maxOccurs="unbounded"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="inventory">
+        <xs:sequence>
+          <xs:element name="node" type="tns:node" nillable="true" minOccurs="0"/>
+          <xs:element name="devices" type="tns:devices" nillable="true" minOccurs="0"/>
+          <xs:element name="services" type="tns:services" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="node">
+        <xs:sequence>
+          <xs:element name="nodeId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="location">
+        <xs:sequence>
+          <xs:element name="locationId" type="xs:string" minOccurs="0"/>
+          <xs:element name="administrationUnit" type="tns:administrationUnit"/>
+          <xs:element name="cityId" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="cityName" type="xs:string" nillable="false"/>
+          <xs:element name="cityAdministrationUnit" type="tns:administrationUnit" nillable="true" minOccurs="0"/>
+          <xs:element name="streetId" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="streetName" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="buildingNo" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="flatNo" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="longitude" type="xs:decimal" nillable="true" minOccurs="0"/>
+          <xs:element name="latitude" type="xs:decimal" nillable="true" minOccurs="0"/>
+          <xs:element name="description" type="xs:string" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="administrationUnit">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="level" type="xs:string" nillable="false"/>
+          <xs:element name="name" type="xs:string" nillable="false"/>
+          <xs:element name="administrationUnit" type="tns:administrationUnit" nillable="true" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="customerTypeEnum">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="INDIVIDUAL"/>
+          <xs:enumeration value="BUSINESS"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="customer">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:string" nillable="false"/>
+          <xs:element name="customerType" type="tns:customerTypeEnum" nillable="false"/>
+          <xs:element name="firstName" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="lastName" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="businessName" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="phoneNumber1" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="phoneNumber2" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="phoneNumber3" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="email" type="xs:string" nillable="true" minOccurs="0"/>
+          <xs:element name="contacts" type="tns:contacts" nillable="true" maxOccurs="1" minOccurs="0"/>
+          <xs:element name="location" type="tns:location" nillable="true" minOccurs="0"/>
+          <xs:element name="attributes" type="tns:attributes" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createTask">
+        <xs:sequence>
+          <xs:element name="query" type="tns:createTaskQuery"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createTaskQuery">
+        <xs:sequence>
+          <xs:element name="sourceSystem" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+          <xs:element name="workOrderId" type="xs:string"/>
+          <xs:element name="inventory" type="tns:inventory" nillable="true" minOccurs="0"/>
+          <xs:element name="location" type="tns:location"/>
+          <xs:element name="customer" type="tns:customer" nillable="true" minOccurs="0"/>
+          <xs:element name="additionalRequirements" type="tns:additionalRequirements" nillable="true" minOccurs="0"/>
+          <xs:element name="slot" type="tns:timeInterval"/>
+          <xs:element name="notes" type="tns:notes" minOccurs="0"/>
+          <xs:element name="attributes" minOccurs="0" type="tns:attributes"/>
+          <xs:element name="additionalTaskTypes" minOccurs="0" type="tns:additionalTaskTypes"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createTaskResponse">
+        <xs:sequence>
+          <xs:element name="return" type="tns:task" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="task">
+        <xs:sequence>
+          <xs:element name="taskId" type="xs:string"/>
+          <xs:element name="status" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="modifyWorkOrder">
+        <xs:sequence>
+          <xs:element name="query" type="tns:modifyWorkOrderQuery"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="modifyWorkOrderQuery">
+        <xs:sequence>
+          <xs:element name="sourceSystem" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+          <xs:element name="processSignature" type="xs:string"/>
+          <xs:element name="workOrderId" type="xs:string"/>
+          <xs:element name="update" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="customer" type="tns:customer" nillable="true" minOccurs="0"/>
+          <xs:element name="notes" type="tns:notes" minOccurs="0"/>
+          <xs:element name="attributes" type="tns:attributes" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="modifyWorkOrderResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="cancelWorkOrder">
+        <xs:sequence>
+          <xs:element name="query" type="tns:cancelWorkOrderQuery"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cancelWorkOrderQuery">
+        <xs:sequence>
+          <xs:element name="sourceSystem" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+          <xs:element name="workOrderId" type="xs:string"/>
+          <xs:element name="note" type="xs:string" nillable="false" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cancelWorkOrderResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="closeWorkOrder">
+        <xs:sequence>
+          <xs:element name="query" type="tns:cancelWorkOrderQuery"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="closeWorkOrderResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:element name="ApplicationException" type="tns:ApplicationException"/>
+      <xs:complexType name="ApplicationException">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="cancelTask">
+        <xs:sequence>
+          <xs:element name="query" type="tns:cancelTaskQuery"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cancelTaskQuery">
+        <xs:sequence>
+          <xs:element name="sourceSystem" type="xs:string"/>
+          <xs:element name="processId" type="xs:string"/>
+          <xs:element name="taskId" type="xs:string"/>
+          <xs:element name="note" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cancelTaskResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="contacts">
+        <xs:sequence>
+          <xs:element name="contact" type="tns:contact" nillable="false" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="contact">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="services">
+        <xs:sequence>
+          <xs:element name="service" type="tns:service" nillable="false" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="service">
+        <xs:sequence>
+          <xs:element name="serviceId" type="xs:string"/>
+          <xs:element name="serviceName" type="xs:string"/>
+          <xs:element name="serviceFullName" type="xs:string"/>
+          <xs:element name="attributes" type="tns:attributes" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="devices">
+        <xs:sequence>
+          <xs:element name="device" type="tns:device" nillable="false" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="device">
+        <xs:sequence>
+          <xs:element name="deviceId" type="xs:string"/>
+          <xs:element name="deviceName" type="xs:string"/>
+          <xs:element name="deviceFullName" type="xs:string"/>
+          <xs:element name="serialNumber" type="xs:string" minOccurs="0"/>
+          <xs:element name="macAddress" type="xs:string" minOccurs="0"/>
+          <xs:element name="attributes" type="tns:attributes" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="attributes">
+        <xs:sequence>
+          <xs:element name="attribute" type="tns:additionalAttribute" nillable="false" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="additionalAttribute">
+        <xs:sequence>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="value" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="additionalTaskTypes">
+        <xs:sequence>
+          <xs:element name="taskType" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="additionalSkills">
+        <xs:sequence>
+          <xs:element name="skill" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="notes">
+        <xs:sequence>
+          <xs:element name="note" type="xs:string" nillable="false"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="additionalRequirements">
+        <xs:sequence>
+          <xs:element name="executorRole" type="xs:string" minOccurs="0"/>
+          <xs:element name="executors" type="tns:executors" minOccurs="0"/>
+          <xs:element name="sla" type="xs:dateTime" minOccurs="0"/>
+          <xs:element name="additionalSkills" type="tns:additionalSkills" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="executors">
+        <xs:sequence>
+          <xs:element name="executor" type="tns:executor" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="executor">
+        <xs:sequence>
+          <xs:element name="executorId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="fetchAvailableAppointmentSlots">
+    <wsdl:part element="tns:fetchAvailableAppointmentSlots" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fetchAvailableAppointmentSlotsResponse">
+    <wsdl:part element="tns:fetchAvailableAppointmentSlotsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="fetchWorkOrder">
+    <wsdl:part element="tns:fetchWorkOrder" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="fetchWorkOrderResponse">
+    <wsdl:part element="tns:fetchWorkOrderResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="rescheduleTask">
+    <wsdl:part element="tns:rescheduleTask" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="rescheduleTaskResponse">
+    <wsdl:part element="tns:rescheduleTaskResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createWorkOrder">
+    <wsdl:part element="tns:createWorkOrder" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createWorkOrderResponse">
+    <wsdl:part element="tns:createWorkOrderResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTask">
+    <wsdl:part element="tns:createTask" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createTaskResponse">
+    <wsdl:part element="tns:createTaskResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyWorkOrder">
+    <wsdl:part element="tns:modifyWorkOrder" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyWorkOrderResponse">
+    <wsdl:part element="tns:modifyWorkOrderResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelWorkOrder">
+    <wsdl:part element="tns:cancelWorkOrder" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelWorkOrderResponse">
+    <wsdl:part element="tns:cancelWorkOrderResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="closeWorkOrder">
+    <wsdl:part element="tns:closeWorkOrder" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="closeWorkOrderResponse">
+    <wsdl:part element="tns:closeWorkOrderResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelTask">
+    <wsdl:part element="tns:cancelTask" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cancelTaskResponse">
+    <wsdl:part element="tns:cancelTaskResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ApplicationException">
+    <wsdl:part element="tns:ApplicationException" name="ApplicationException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="FSMEndpoint">
+    <wsdl:operation name="fetchAvailableAppointmentSlots">
+      <wsdl:input message="tns:fetchAvailableAppointmentSlots" name="fetchAvailableAppointmentSlots"></wsdl:input>
+      <wsdl:output message="tns:fetchAvailableAppointmentSlotsResponse" name="fetchAvailableAppointmentSlotsResponse"></wsdl:output>
+      <wsdl:fault message="tns:ApplicationException" name="ApplicationException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="fetchWorkOrder">
+      <wsdl:input message="tns:fetchWorkOrder" name="fetchWorkOrder"/>
+      <wsdl:output message="tns:fetchWorkOrderResponse" name="fetchWorkOrderResponse"/>
+      <wsdl:fault message="tns:ApplicationException" name="ApplicationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="rescheduleTask">
+      <wsdl:input message="tns:rescheduleTask" name="rescheduleTask"></wsdl:input>
+      <wsdl:output message="tns:rescheduleTaskResponse" name="rescheduleTaskResponse"></wsdl:output>
+      <wsdl:fault message="tns:ApplicationException" name="ApplicationException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createWorkOrder">
+      <wsdl:input message="tns:createWorkOrder" name="createWorkOrder"></wsdl:input>
+      <wsdl:output message="tns:createWorkOrderResponse" name="createWorkOrderResponse"></wsdl:output>
+      <wsdl:fault message="tns:ApplicationException" name="ApplicationException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTask">
+      <wsdl:input message="tns:createTask" name="createTask"></wsdl:input>
+      <wsdl:output message="tns:createTaskResponse" name="createTaskResponse"></wsdl:output>
+      <wsdl:fault message="tns:ApplicationException" name="ApplicationException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="modifyWorkOrder">
+      <wsdl:input message="tns:modifyWorkOrder" name="modifyWorkOrder"></wsdl:input>
+      <wsdl:output message="tns:modifyWorkOrderResponse" name="modifyWorkOrderResponse"></wsdl:output>
+      <wsdl:fault message="tns:ApplicationException" name="ApplicationException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelWorkOrder">
+      <wsdl:input message="tns:cancelWorkOrder" name="cancelWorkOrder"></wsdl:input>
+      <wsdl:output message="tns:cancelWorkOrderResponse" name="cancelWorkOrderResponse"></wsdl:output>
+      <wsdl:fault message="tns:ApplicationException" name="ApplicationException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="closeWorkOrder">
+      <wsdl:input message="tns:closeWorkOrder" name="closeWorkOrder"></wsdl:input>
+      <wsdl:output message="tns:closeWorkOrderResponse" name="closeWorkOrderResponse"></wsdl:output>
+      <wsdl:fault message="tns:ApplicationException" name="ApplicationException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelTask">
+      <wsdl:input message="tns:cancelTask" name="cancelTask"></wsdl:input>
+      <wsdl:output message="tns:cancelTaskResponse" name="cancelTaskResponse"></wsdl:output>
+      <wsdl:fault message="tns:ApplicationException" name="ApplicationException"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FSMEndpointServiceSoapBinding" type="tns:FSMEndpoint">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="fetchAvailableAppointmentSlots">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="fetchAvailableAppointmentSlots">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="fetchAvailableAppointmentSlotsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApplicationException">
+        <soap:fault name="ApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="fetchWorkOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="fetchWorkOrder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="fetchWorkOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApplicationException">
+        <soap:fault name="ApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="rescheduleTask">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="rescheduleTask">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="rescheduleTaskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApplicationException">
+        <soap:fault name="ApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createWorkOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createWorkOrder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createWorkOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApplicationException">
+        <soap:fault name="ApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createTask">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createTask">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createTaskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApplicationException">
+        <soap:fault name="ApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="modifyWorkOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="modifyWorkOrder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifyWorkOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApplicationException">
+        <soap:fault name="ApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelWorkOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cancelWorkOrder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelWorkOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApplicationException">
+        <soap:fault name="ApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="closeWorkOrder">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="closeWorkOrder">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="closeWorkOrderResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApplicationException">
+        <soap:fault name="ApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="cancelTask">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="cancelTask">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelTaskResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ApplicationException">
+        <soap:fault name="ApplicationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FSMEndpointService">
+    <wsdl:port binding="tns:FSMEndpointServiceSoapBinding" name="FSMEndpointPort">
+      <soap:address location="http://localhost:8080/fsm-integration/fsm-endpoint"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:endpoint>http://pablo-A6200:8088/mockFSMEndpointServiceSoapBinding</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="cancelTask" bindingOperationName="cancelTask" type="Request-Response" outputName="cancelTaskResponse" inputName="cancelTask" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:cancelTask>
+         <query>
+            <sourceSystem>?</sourceSystem>
+            <processId>?</processId>
+            <taskId>?</taskId>
+            <!--Optional:-->
+            <note>?</note>
+         </query>
+      </soap1:cancelTask>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/cancelTask"/></con:call></con:operation><con:operation isOneWay="false" action="" name="cancelWorkOrder" bindingOperationName="cancelWorkOrder" type="Request-Response" outputName="cancelWorkOrderResponse" inputName="cancelWorkOrder" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:cancelWorkOrder>
+         <query>
+            <sourceSystem>?</sourceSystem>
+            <processId>?</processId>
+            <workOrderId>?</workOrderId>
+            <!--Optional:-->
+            <note>?</note>
+         </query>
+      </soap1:cancelWorkOrder>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/cancelWorkOrder"/></con:call></con:operation><con:operation isOneWay="false" action="" name="closeWorkOrder" bindingOperationName="closeWorkOrder" type="Request-Response" outputName="closeWorkOrderResponse" inputName="closeWorkOrder" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:closeWorkOrder>
+         <query>
+            <sourceSystem>?</sourceSystem>
+            <processId>?</processId>
+            <workOrderId>?</workOrderId>
+            <!--Optional:-->
+            <note>?</note>
+         </query>
+      </soap1:closeWorkOrder>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/closeWorkOrder"/></con:call></con:operation><con:operation isOneWay="false" action="" name="createTask" bindingOperationName="createTask" type="Request-Response" outputName="createTaskResponse" inputName="createTask" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:createTask>
+         <query>
+            <sourceSystem>?</sourceSystem>
+            <processId>?</processId>
+            <workOrderId>?</workOrderId>
+            <!--Optional:-->
+            <inventory>
+               <!--Optional:-->
+               <node>
+                  <nodeId>?</nodeId>
+               </node>
+               <!--Optional:-->
+               <devices>
+                  <!--1 or more repetitions:-->
+                  <device>
+                     <deviceId>?</deviceId>
+                     <deviceName>?</deviceName>
+                     <deviceFullName>?</deviceFullName>
+                     <!--Optional:-->
+                     <serialNumber>?</serialNumber>
+                     <!--Optional:-->
+                     <macAddress>?</macAddress>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </device>
+               </devices>
+               <!--Optional:-->
+               <services>
+                  <!--1 or more repetitions:-->
+                  <service>
+                     <serviceId>?</serviceId>
+                     <serviceName>?</serviceName>
+                     <serviceFullName>?</serviceFullName>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </service>
+               </services>
+            </inventory>
+            <location>
+               <!--Optional:-->
+               <locationId>?</locationId>
+               <administrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </administrationUnit>
+               <!--Optional:-->
+               <cityId>?</cityId>
+               <cityName>?</cityName>
+               <!--Optional:-->
+               <cityAdministrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </cityAdministrationUnit>
+               <!--Optional:-->
+               <streetId>?</streetId>
+               <!--Optional:-->
+               <streetName>?</streetName>
+               <!--Optional:-->
+               <buildingNo>?</buildingNo>
+               <!--Optional:-->
+               <flatNo>?</flatNo>
+               <!--Optional:-->
+               <longitude>?</longitude>
+               <!--Optional:-->
+               <latitude>?</latitude>
+               <!--Optional:-->
+               <description>?</description>
+            </location>
+            <!--Optional:-->
+            <customer>
+               <customerId>?</customerId>
+               <customerType>?</customerType>
+               <!--Optional:-->
+               <firstName>?</firstName>
+               <!--Optional:-->
+               <lastName>?</lastName>
+               <!--Optional:-->
+               <businessName>?</businessName>
+               <!--Optional:-->
+               <phoneNumber1>?</phoneNumber1>
+               <!--Optional:-->
+               <phoneNumber2>?</phoneNumber2>
+               <!--Optional:-->
+               <phoneNumber3>?</phoneNumber3>
+               <!--Optional:-->
+               <email>?</email>
+               <!--Optional:-->
+               <contacts>
+                  <!--1 or more repetitions:-->
+                  <contact>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </contact>
+               </contacts>
+               <!--Optional:-->
+               <location>
+                  <!--Optional:-->
+                  <locationId>?</locationId>
+                  <administrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </administrationUnit>
+                  <!--Optional:-->
+                  <cityId>?</cityId>
+                  <cityName>?</cityName>
+                  <!--Optional:-->
+                  <cityAdministrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </cityAdministrationUnit>
+                  <!--Optional:-->
+                  <streetId>?</streetId>
+                  <!--Optional:-->
+                  <streetName>?</streetName>
+                  <!--Optional:-->
+                  <buildingNo>?</buildingNo>
+                  <!--Optional:-->
+                  <flatNo>?</flatNo>
+                  <!--Optional:-->
+                  <longitude>?</longitude>
+                  <!--Optional:-->
+                  <latitude>?</latitude>
+                  <!--Optional:-->
+                  <description>?</description>
+               </location>
+               <!--Optional:-->
+               <attributes>
+                  <!--1 or more repetitions:-->
+                  <attribute>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </attribute>
+               </attributes>
+            </customer>
+            <!--Optional:-->
+            <additionalRequirements>
+               <!--Optional:-->
+               <executorRole>?</executorRole>
+               <!--Optional:-->
+               <executors>
+                  <!--1 or more repetitions:-->
+                  <executor>
+                     <executorId>?</executorId>
+                  </executor>
+               </executors>
+               <!--Optional:-->
+               <sla>?</sla>
+               <!--Optional:-->
+               <additionalSkills>
+                  <!--1 or more repetitions:-->
+                  <skill>?</skill>
+               </additionalSkills>
+            </additionalRequirements>
+            <slot>
+               <dateFrom>?</dateFrom>
+               <dateTo>?</dateTo>
+            </slot>
+            <!--Optional:-->
+            <notes>
+               <note>?</note>
+            </notes>
+            <!--Optional:-->
+            <attributes>
+               <!--1 or more repetitions:-->
+               <attribute>
+                  <name>?</name>
+                  <!--1 or more repetitions:-->
+                  <value>?</value>
+               </attribute>
+            </attributes>
+            <!--Optional:-->
+            <additionalTaskTypes>
+               <!--1 or more repetitions:-->
+               <taskType>?</taskType>
+            </additionalTaskTypes>
+         </query>
+      </soap1:createTask>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createTask"/></con:call></con:operation><con:operation isOneWay="false" action="" name="createWorkOrder" bindingOperationName="createWorkOrder" type="Request-Response" outputName="createWorkOrderResponse" inputName="createWorkOrder" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:createWorkOrder>
+         <query>
+            <!--Optional:-->
+            <workOrderId>?</workOrderId>
+            <sourceSystem>?</sourceSystem>
+            <processId>?</processId>
+            <processSignature>?</processSignature>
+            <processCreationDate>?</processCreationDate>
+            <orderType>?</orderType>
+            <orderTechnology>?</orderTechnology>
+            <!--Optional:-->
+            <inventory>
+               <!--Optional:-->
+               <node>
+                  <nodeId>?</nodeId>
+               </node>
+               <!--Optional:-->
+               <devices>
+                  <!--1 or more repetitions:-->
+                  <device>
+                     <deviceId>?</deviceId>
+                     <deviceName>?</deviceName>
+                     <deviceFullName>?</deviceFullName>
+                     <!--Optional:-->
+                     <serialNumber>?</serialNumber>
+                     <!--Optional:-->
+                     <macAddress>?</macAddress>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </device>
+               </devices>
+               <!--Optional:-->
+               <services>
+                  <!--1 or more repetitions:-->
+                  <service>
+                     <serviceId>?</serviceId>
+                     <serviceName>?</serviceName>
+                     <serviceFullName>?</serviceFullName>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </service>
+               </services>
+            </inventory>
+            <location>
+               <!--Optional:-->
+               <locationId>?</locationId>
+               <administrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </administrationUnit>
+               <!--Optional:-->
+               <cityId>?</cityId>
+               <cityName>?</cityName>
+               <!--Optional:-->
+               <cityAdministrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </cityAdministrationUnit>
+               <!--Optional:-->
+               <streetId>?</streetId>
+               <!--Optional:-->
+               <streetName>?</streetName>
+               <!--Optional:-->
+               <buildingNo>?</buildingNo>
+               <!--Optional:-->
+               <flatNo>?</flatNo>
+               <!--Optional:-->
+               <longitude>?</longitude>
+               <!--Optional:-->
+               <latitude>?</latitude>
+               <!--Optional:-->
+               <description>?</description>
+            </location>
+            <!--Optional:-->
+            <customer>
+               <customerId>?</customerId>
+               <customerType>?</customerType>
+               <!--Optional:-->
+               <firstName>?</firstName>
+               <!--Optional:-->
+               <lastName>?</lastName>
+               <!--Optional:-->
+               <businessName>?</businessName>
+               <!--Optional:-->
+               <phoneNumber1>?</phoneNumber1>
+               <!--Optional:-->
+               <phoneNumber2>?</phoneNumber2>
+               <!--Optional:-->
+               <phoneNumber3>?</phoneNumber3>
+               <!--Optional:-->
+               <email>?</email>
+               <!--Optional:-->
+               <contacts>
+                  <!--1 or more repetitions:-->
+                  <contact>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </contact>
+               </contacts>
+               <!--Optional:-->
+               <location>
+                  <!--Optional:-->
+                  <locationId>?</locationId>
+                  <administrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </administrationUnit>
+                  <!--Optional:-->
+                  <cityId>?</cityId>
+                  <cityName>?</cityName>
+                  <!--Optional:-->
+                  <cityAdministrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </cityAdministrationUnit>
+                  <!--Optional:-->
+                  <streetId>?</streetId>
+                  <!--Optional:-->
+                  <streetName>?</streetName>
+                  <!--Optional:-->
+                  <buildingNo>?</buildingNo>
+                  <!--Optional:-->
+                  <flatNo>?</flatNo>
+                  <!--Optional:-->
+                  <longitude>?</longitude>
+                  <!--Optional:-->
+                  <latitude>?</latitude>
+                  <!--Optional:-->
+                  <description>?</description>
+               </location>
+               <!--Optional:-->
+               <attributes>
+                  <!--1 or more repetitions:-->
+                  <attribute>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </attribute>
+               </attributes>
+            </customer>
+            <!--Optional:-->
+            <additionalRequirements>
+               <!--Optional:-->
+               <executorRole>?</executorRole>
+               <!--Optional:-->
+               <executors>
+                  <!--1 or more repetitions:-->
+                  <executor>
+                     <executorId>?</executorId>
+                  </executor>
+               </executors>
+               <!--Optional:-->
+               <sla>?</sla>
+               <!--Optional:-->
+               <additionalSkills>
+                  <!--1 or more repetitions:-->
+                  <skill>?</skill>
+               </additionalSkills>
+            </additionalRequirements>
+            <!--Optional:-->
+            <slot>
+               <dateFrom>?</dateFrom>
+               <dateTo>?</dateTo>
+            </slot>
+            <!--Optional:-->
+            <rangeStart>?</rangeStart>
+            <!--Optional:-->
+            <notes>
+               <note>?</note>
+            </notes>
+            <!--Optional:-->
+            <additionalTaskTypes>
+               <!--1 or more repetitions:-->
+               <taskType>?</taskType>
+            </additionalTaskTypes>
+            <!--Optional:-->
+            <attributes>
+               <!--1 or more repetitions:-->
+               <attribute>
+                  <name>?</name>
+                  <!--1 or more repetitions:-->
+                  <value>?</value>
+               </attribute>
+            </attributes>
+         </query>
+      </soap1:createWorkOrder>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createWorkOrder"/></con:call></con:operation><con:operation isOneWay="false" action="" name="fetchAvailableAppointmentSlots" bindingOperationName="fetchAvailableAppointmentSlots" type="Request-Response" outputName="fetchAvailableAppointmentSlotsResponse" inputName="fetchAvailableAppointmentSlots" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:fetchAvailableAppointmentSlots>
+         <query>
+            <sourceSystem>?</sourceSystem>
+            <processId>?</processId>
+            <processCreationDate>?</processCreationDate>
+            <orderType>?</orderType>
+            <orderTechnology>?</orderTechnology>
+            <!--Optional:-->
+            <inventory>
+               <!--Optional:-->
+               <node>
+                  <nodeId>?</nodeId>
+               </node>
+               <!--Optional:-->
+               <devices>
+                  <!--1 or more repetitions:-->
+                  <device>
+                     <deviceId>?</deviceId>
+                     <deviceName>?</deviceName>
+                     <deviceFullName>?</deviceFullName>
+                     <!--Optional:-->
+                     <serialNumber>?</serialNumber>
+                     <!--Optional:-->
+                     <macAddress>?</macAddress>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </device>
+               </devices>
+               <!--Optional:-->
+               <services>
+                  <!--1 or more repetitions:-->
+                  <service>
+                     <serviceId>?</serviceId>
+                     <serviceName>?</serviceName>
+                     <serviceFullName>?</serviceFullName>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </service>
+               </services>
+            </inventory>
+            <location>
+               <!--Optional:-->
+               <locationId>?</locationId>
+               <administrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </administrationUnit>
+               <!--Optional:-->
+               <cityId>?</cityId>
+               <cityName>?</cityName>
+               <!--Optional:-->
+               <cityAdministrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </cityAdministrationUnit>
+               <!--Optional:-->
+               <streetId>?</streetId>
+               <!--Optional:-->
+               <streetName>?</streetName>
+               <!--Optional:-->
+               <buildingNo>?</buildingNo>
+               <!--Optional:-->
+               <flatNo>?</flatNo>
+               <!--Optional:-->
+               <longitude>?</longitude>
+               <!--Optional:-->
+               <latitude>?</latitude>
+               <!--Optional:-->
+               <description>?</description>
+            </location>
+            <!--Optional:-->
+            <customer>
+               <customerId>?</customerId>
+               <customerType>?</customerType>
+               <!--Optional:-->
+               <firstName>?</firstName>
+               <!--Optional:-->
+               <lastName>?</lastName>
+               <!--Optional:-->
+               <businessName>?</businessName>
+               <!--Optional:-->
+               <phoneNumber1>?</phoneNumber1>
+               <!--Optional:-->
+               <phoneNumber2>?</phoneNumber2>
+               <!--Optional:-->
+               <phoneNumber3>?</phoneNumber3>
+               <!--Optional:-->
+               <email>?</email>
+               <!--Optional:-->
+               <contacts>
+                  <!--1 or more repetitions:-->
+                  <contact>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </contact>
+               </contacts>
+               <!--Optional:-->
+               <location>
+                  <!--Optional:-->
+                  <locationId>?</locationId>
+                  <administrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </administrationUnit>
+                  <!--Optional:-->
+                  <cityId>?</cityId>
+                  <cityName>?</cityName>
+                  <!--Optional:-->
+                  <cityAdministrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </cityAdministrationUnit>
+                  <!--Optional:-->
+                  <streetId>?</streetId>
+                  <!--Optional:-->
+                  <streetName>?</streetName>
+                  <!--Optional:-->
+                  <buildingNo>?</buildingNo>
+                  <!--Optional:-->
+                  <flatNo>?</flatNo>
+                  <!--Optional:-->
+                  <longitude>?</longitude>
+                  <!--Optional:-->
+                  <latitude>?</latitude>
+                  <!--Optional:-->
+                  <description>?</description>
+               </location>
+               <!--Optional:-->
+               <attributes>
+                  <!--1 or more repetitions:-->
+                  <attribute>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </attribute>
+               </attributes>
+            </customer>
+            <!--Optional:-->
+            <additionalRequirements>
+               <!--Optional:-->
+               <executorRole>?</executorRole>
+               <!--Optional:-->
+               <executors>
+                  <!--1 or more repetitions:-->
+                  <executor>
+                     <executorId>?</executorId>
+                  </executor>
+               </executors>
+               <!--Optional:-->
+               <sla>?</sla>
+               <!--Optional:-->
+               <additionalSkills>
+                  <!--1 or more repetitions:-->
+                  <skill>?</skill>
+               </additionalSkills>
+            </additionalRequirements>
+            <interval>
+               <dateFrom>?</dateFrom>
+               <dateTo>?</dateTo>
+            </interval>
+            <!--Optional:-->
+            <additionalTaskTypes>
+               <!--1 or more repetitions:-->
+               <taskType>?</taskType>
+            </additionalTaskTypes>
+         </query>
+      </soap1:fetchAvailableAppointmentSlots>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/fetchAvailableAppointmentSlots"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="fetchWorkOrder" bindingOperationName="fetchWorkOrder" type="Request-Response" outputName="fetchWorkOrderResponse" inputName="fetchWorkOrder" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:fetchWorkOrder>
+         <query>
+            <sourceSystem>?</sourceSystem>
+            <processId>?</processId>
+            <key>
+               <!--Optional:-->
+               <sourceSystem>?</sourceSystem>
+               <!--You have a CHOICE of the next 3 items at this level-->
+               <workOrderId>?</workOrderId>
+               <processId>?</processId>
+               <processSignature>?</processSignature>
+               <!--Optional:-->
+               <interval>
+                  <dateFrom>?</dateFrom>
+                  <dateTo>?</dateTo>
+               </interval>
+               <!--Optional:-->
+               <customer>
+                  <customerId>?</customerId>
+               </customer>
+            </key>
+         </query>
+      </soap1:fetchWorkOrder>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/fetchWorkOrder"/></con:call></con:operation><con:operation isOneWay="false" action="" name="modifyWorkOrder" bindingOperationName="modifyWorkOrder" type="Request-Response" outputName="modifyWorkOrderResponse" inputName="modifyWorkOrder" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:modifyWorkOrder>
+         <query>
+            <sourceSystem>?</sourceSystem>
+            <processId>?</processId>
+            <processSignature>?</processSignature>
+            <workOrderId>?</workOrderId>
+            <!--Optional:-->
+            <update>?</update>
+            <!--Optional:-->
+            <customer>
+               <customerId>?</customerId>
+               <customerType>?</customerType>
+               <!--Optional:-->
+               <firstName>?</firstName>
+               <!--Optional:-->
+               <lastName>?</lastName>
+               <!--Optional:-->
+               <businessName>?</businessName>
+               <!--Optional:-->
+               <phoneNumber1>?</phoneNumber1>
+               <!--Optional:-->
+               <phoneNumber2>?</phoneNumber2>
+               <!--Optional:-->
+               <phoneNumber3>?</phoneNumber3>
+               <!--Optional:-->
+               <email>?</email>
+               <!--Optional:-->
+               <contacts>
+                  <!--1 or more repetitions:-->
+                  <contact>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </contact>
+               </contacts>
+               <!--Optional:-->
+               <location>
+                  <!--Optional:-->
+                  <locationId>?</locationId>
+                  <administrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </administrationUnit>
+                  <!--Optional:-->
+                  <cityId>?</cityId>
+                  <cityName>?</cityName>
+                  <!--Optional:-->
+                  <cityAdministrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </cityAdministrationUnit>
+                  <!--Optional:-->
+                  <streetId>?</streetId>
+                  <!--Optional:-->
+                  <streetName>?</streetName>
+                  <!--Optional:-->
+                  <buildingNo>?</buildingNo>
+                  <!--Optional:-->
+                  <flatNo>?</flatNo>
+                  <!--Optional:-->
+                  <longitude>?</longitude>
+                  <!--Optional:-->
+                  <latitude>?</latitude>
+                  <!--Optional:-->
+                  <description>?</description>
+               </location>
+               <!--Optional:-->
+               <attributes>
+                  <!--1 or more repetitions:-->
+                  <attribute>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </attribute>
+               </attributes>
+            </customer>
+            <!--Optional:-->
+            <notes>
+               <note>?</note>
+            </notes>
+            <!--Optional:-->
+            <attributes>
+               <!--1 or more repetitions:-->
+               <attribute>
+                  <name>?</name>
+                  <!--1 or more repetitions:-->
+                  <value>?</value>
+               </attribute>
+            </attributes>
+         </query>
+      </soap1:modifyWorkOrder>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/modifyWorkOrder"/></con:call></con:operation><con:operation isOneWay="false" action="" name="rescheduleTask" bindingOperationName="rescheduleTask" type="Request-Response" outputName="rescheduleTaskResponse" inputName="rescheduleTask" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:rescheduleTask>
+         <query>
+            <sourceSystem>?</sourceSystem>
+            <processId>?</processId>
+            <taskId>?</taskId>
+            <slot>
+               <dateFrom>?</dateFrom>
+               <dateTo>?</dateTo>
+            </slot>
+         </query>
+      </soap1:rescheduleTask>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/rescheduleTask"/></con:call></con:operation></con:interface><con:mockService port="8088" path="/mockFSMEndpointServiceSoapBinding" host="pablo-A6200" name="FSMEndpointServiceSoapBinding MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="fetchAvailableAppointmentSlots" interface="FSMEndpointServiceSoapBinding" operation="fetchAvailableAppointmentSlots"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Fail</con:defaultResponse><con:response name="Fail" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
+    <soap:Fault>
+      <soap:Code>
+        <soap:Value>soap:Sender</soap:Value>
+        <!--Optional:-->
+        <soap:Subcode>
+          <soap:Value>soap:1</soap:Value>
+          <!--Optional:-->
+          <soap:Subcode/>
+        </soap:Subcode>
+      </soap:Code>
+      <soap:Reason>
+        <!--1 or more repetitions:-->
+        <soap:Text xml:lang="?">El texto</soap:Text>
+      </soap:Reason>
+      <!--Optional:-->
+      <soap:Node>?</soap:Node>
+      <!--Optional:-->
+      <soap:Role>?</soap:Role>
+      <!--Optional:-->
+      <soap:Detail>
+        <!--You may enter ANY elements at this point-->
+      </soap:Detail>
+    </soap:Fault>
+  </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/fetchAvailableAppointmentSlotsResponse"/></con:response><con:response name="Correcto" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:fetchAvailableAppointmentSlotsResponse>
+         <return>
+            <!--Optional:-->
+            <slots>
+               <!--1 or more repetitions:-->
+               <slot>
+                  <interval>
+                     <dateFrom>?</dateFrom>
+                     <dateTo>?</dateTo>
+                  </interval>
+                  <goodness>?</goodness>
+                  <variantsQuantity>100</variantsQuantity>
+                  <!--Optional:-->
+                  <fulfillmentPartner>111</fulfillmentPartner>
+               </slot>
+            </slots>
+         </return>
+      </soap1:fetchAvailableAppointmentSlotsResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/fetchAvailableAppointmentSlotsResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/></con:soapui-project>
