@@ -23,7 +23,7 @@
       <sca:interface.wsdl interface="wsdl/fsm-endpoint.wsdl#wsdl.porttype(FSMEndpoint)"/>
       <soap:binding.soap name="soap1">
         <soap:wsdl>wsdl/fsm-endpoint.wsdl</soap:wsdl>
-        <soap:endpointAddress>http://${FSM_SERVER}:${FSM_PORT}/${FSM_CONTEXT}</soap:endpointAddress>
+        <soap:endpointAddress>http://${FSM_SERVER:localhost}:${FSM_PORT:8088}/${FSM_CONTEXT:mockFSMEndpointServiceSoapBinding}</soap:endpointAddress>
       </soap:binding.soap>
     </sca:reference>
   </sca:composite>

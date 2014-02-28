@@ -1,0 +1,16 @@
+<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+	<env:Header />
+	<env:Body>
+		<env:Fault xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+			<env:Code xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+				<env:Value>soap:Sender</env:Value>
+			</env:Code>
+			<env:Reason>
+				<env:Text xml:lang="en-US">Error en la ejecucion del servicio
+				</env:Text>
+			</env:Reason>
+			<env:Role>?</env:Role>
+			<env:Detail />
+		</env:Fault>
+	</env:Body>
+</env:Envelope>

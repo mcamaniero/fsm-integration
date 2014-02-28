@@ -1,0 +1,23 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:fetchAvailableAppointmentSlotsResponse>
+         <return>
+            <!--Optional:-->
+            <slots>
+               <!--1 or more repetitions:-->
+               <slot>
+                  <interval>
+                     <dateFrom>?</dateFrom>
+                     <dateTo>?</dateTo>
+                  </interval>
+                  <goodness>?</goodness>
+                  <variantsQuantity>100</variantsQuantity>
+                  <!--Optional:-->
+                  <fulfillmentPartner>111</fulfillmentPartner>
+               </slot>
+            </slots>
+         </return>
+      </soap1:fetchAvailableAppointmentSlotsResponse>
+   </soap:Body>
+</soap:Envelope>

@@ -1152,12 +1152,12 @@
          </query>
       </soap1:createWorkOrder>
    </soap:Body>
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createWorkOrder"/></con:call></con:operation><con:operation isOneWay="false" action="" name="fetchAvailableAppointmentSlots" bindingOperationName="fetchAvailableAppointmentSlots" type="Request-Response" outputName="fetchAvailableAppointmentSlotsResponse" inputName="fetchAvailableAppointmentSlots" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createWorkOrder"/></con:call></con:operation><con:operation isOneWay="false" action="" name="fetchAvailableAppointmentSlots" bindingOperationName="fetchAvailableAppointmentSlots" type="Request-Response" outputName="fetchAvailableAppointmentSlotsResponse" inputName="fetchAvailableAppointmentSlots" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pablo-A6200:8088/mockFSMEndpointServiceSoapBinding</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
    <soap:Header/>
    <soap:Body>
       <soap1:fetchAvailableAppointmentSlots>
          <query>
-            <sourceSystem>?</sourceSystem>
+            <sourceSystem>0</sourceSystem>
             <processId>?</processId>
             <processCreationDate>?</processCreationDate>
             <orderType>?</orderType>
@@ -1499,33 +1499,7 @@
          </query>
       </soap1:rescheduleTask>
    </soap:Body>
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/rescheduleTask"/></con:call></con:operation></con:interface><con:mockService port="8088" path="/mockFSMEndpointServiceSoapBinding" host="pablo-A6200" name="FSMEndpointServiceSoapBinding MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="fetchAvailableAppointmentSlots" interface="FSMEndpointServiceSoapBinding" operation="fetchAvailableAppointmentSlots"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Fail</con:defaultResponse><con:response name="Fail" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-  <soap:Body>
-    <soap:Fault>
-      <soap:Code>
-        <soap:Value>soap:Sender</soap:Value>
-        <!--Optional:-->
-        <soap:Subcode>
-          <soap:Value>soap:1</soap:Value>
-          <!--Optional:-->
-          <soap:Subcode/>
-        </soap:Subcode>
-      </soap:Code>
-      <soap:Reason>
-        <!--1 or more repetitions:-->
-        <soap:Text xml:lang="?">El texto</soap:Text>
-      </soap:Reason>
-      <!--Optional:-->
-      <soap:Node>?</soap:Node>
-      <!--Optional:-->
-      <soap:Role>?</soap:Role>
-      <!--Optional:-->
-      <soap:Detail>
-        <!--You may enter ANY elements at this point-->
-      </soap:Detail>
-    </soap:Fault>
-  </soap:Body>
-</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/fetchAvailableAppointmentSlotsResponse"/></con:response><con:response name="Correcto" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/rescheduleTask"/></con:call></con:operation></con:interface><con:mockService port="8088" path="/mockFSMEndpointServiceSoapBinding" host="pablo-A6200" name="FSMEndpointServiceSoapBinding MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="fetchAvailableAppointmentSlots" interface="FSMEndpointServiceSoapBinding" operation="fetchAvailableAppointmentSlots"><con:settings/><con:dispatchStyle>QUERY_MATCH</con:dispatchStyle><con:defaultResponse>Correcto</con:defaultResponse><con:response name="Correcto" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
    <soap:Header/>
    <soap:Body>
       <soap1:fetchAvailableAppointmentSlotsResponse>
@@ -1547,4 +1521,32 @@
          </return>
       </soap1:fetchAvailableAppointmentSlotsResponse>
    </soap:Body>
-</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/fetchAvailableAppointmentSlotsResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/></con:soapui-project>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/fetchAvailableAppointmentSlotsResponse"/></con:response><con:response name="Fail" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
+    <soap:Fault>
+      <soap:Code>
+        <soap:Value>soap:Sender</soap:Value>
+        <!--Optional:-->
+        <soap:Subcode>
+          <soap:Value>soap:1</soap:Value>
+          <!--Optional:-->
+          <soap:Subcode/>
+        </soap:Subcode>
+      </soap:Code>
+      <soap:Reason>
+        <!--1 or more repetitions:-->
+        <soap:Text xml:lang="?">Error en la ejecucion del servicio</soap:Text>
+      </soap:Reason>
+      <!--Optional:-->
+      <soap:Node>?</soap:Node>
+      <!--Optional:-->
+      <soap:Role>?</soap:Role>
+      <!--Optional:-->
+      <soap:Detail>
+        <!--You may enter ANY elements at this point-->
+      </soap:Detail>
+    </soap:Fault>
+  </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/fetchAvailableAppointmentSlotsResponse"/></con:response><con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:query><con:name>sourceSystem 123</con:name><con:query>declare namespace soap='http://www.w3.org/2003/05/soap-envelope';
+declare namespace soap1='http://soap.integration.fsm.comarch.com/';
+//soap1:fetchAvailableAppointmentSlots/query/sourceSystem[text()] </con:query><con:match>0</con:match><con:response>Fail</con:response></con:query></con:dispatchConfig></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/></con:soapui-project>
