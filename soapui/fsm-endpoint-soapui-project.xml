@@ -931,14 +931,14 @@
          </query>
       </soap1:createTask>
    </soap:Body>
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createTask"/></con:call></con:operation><con:operation isOneWay="false" action="" name="createWorkOrder" bindingOperationName="createWorkOrder" type="Request-Response" outputName="createWorkOrderResponse" inputName="createWorkOrder" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createTask"/></con:call></con:operation><con:operation isOneWay="false" action="" name="createWorkOrder" bindingOperationName="createWorkOrder" type="Request-Response" outputName="createWorkOrderResponse" inputName="createWorkOrder" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pablo-A6200:8088/mockFSMEndpointServiceSoapBinding</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
    <soap:Header/>
    <soap:Body>
       <soap1:createWorkOrder>
          <query>
             <!--Optional:-->
-            <workOrderId>?</workOrderId>
-            <sourceSystem>?</sourceSystem>
+            <workOrderId>0</workOrderId>
+            <sourceSystem>1</sourceSystem>
             <processId>?</processId>
             <processSignature>?</processSignature>
             <processCreationDate>?</processCreationDate>
@@ -1152,7 +1152,7 @@
          </query>
       </soap1:createWorkOrder>
    </soap:Body>
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createWorkOrder"/></con:call></con:operation><con:operation isOneWay="false" action="" name="fetchAvailableAppointmentSlots" bindingOperationName="fetchAvailableAppointmentSlots" type="Request-Response" outputName="fetchAvailableAppointmentSlotsResponse" inputName="fetchAvailableAppointmentSlots" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+</soap:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createWorkOrder"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="fetchAvailableAppointmentSlots" bindingOperationName="fetchAvailableAppointmentSlots" type="Request-Response" outputName="fetchAvailableAppointmentSlotsResponse" inputName="fetchAvailableAppointmentSlots" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
    <soap:Header/>
    <soap:Body>
       <soap1:fetchAvailableAppointmentSlots>
@@ -1499,7 +1499,651 @@
          </query>
       </soap1:rescheduleTask>
    </soap:Body>
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/rescheduleTask"/></con:call></con:operation></con:interface><con:mockService port="8088" path="/mockFSMEndpointServiceSoapBinding" host="pablo-A6200" name="FSMEndpointServiceSoapBinding MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="fetchAvailableAppointmentSlots" interface="FSMEndpointServiceSoapBinding" operation="fetchAvailableAppointmentSlots"><con:settings/><con:dispatchStyle>QUERY_MATCH</con:dispatchStyle><con:defaultResponse>Correcto</con:defaultResponse><con:response name="Correcto" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/rescheduleTask"/></con:call></con:operation></con:interface><con:testSuite name="FSMEndpointServiceSoapBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createWorkOrder TestCase" searchProperties="true" id="c1898993-3f38-429f-8d00-b74b4c4be56f"><con:settings/><con:testStep type="request" name="failCreateWorkOrder"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>FSMEndpointServiceSoapBinding</con:interface><con:operation>createWorkOrder</con:operation><con:request name="failCreateWorkOrder" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:createWorkOrder>
+         <query>
+            <!--Optional:-->
+            <workOrderId>0</workOrderId>
+            <sourceSystem>1</sourceSystem>
+            <processId>?</processId>
+            <processSignature>?</processSignature>
+            <processCreationDate>?</processCreationDate>
+            <orderType>?</orderType>
+            <orderTechnology>?</orderTechnology>
+            <!--Optional:-->
+            <inventory>
+               <!--Optional:-->
+               <node>
+                  <nodeId>?</nodeId>
+               </node>
+               <!--Optional:-->
+               <devices>
+                  <!--1 or more repetitions:-->
+                  <device>
+                     <deviceId>?</deviceId>
+                     <deviceName>?</deviceName>
+                     <deviceFullName>?</deviceFullName>
+                     <!--Optional:-->
+                     <serialNumber>?</serialNumber>
+                     <!--Optional:-->
+                     <macAddress>?</macAddress>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </device>
+               </devices>
+               <!--Optional:-->
+               <services>
+                  <!--1 or more repetitions:-->
+                  <service>
+                     <serviceId>?</serviceId>
+                     <serviceName>?</serviceName>
+                     <serviceFullName>?</serviceFullName>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </service>
+               </services>
+            </inventory>
+            <location>
+               <!--Optional:-->
+               <locationId>?</locationId>
+               <administrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </administrationUnit>
+               <!--Optional:-->
+               <cityId>?</cityId>
+               <cityName>?</cityName>
+               <!--Optional:-->
+               <cityAdministrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </cityAdministrationUnit>
+               <!--Optional:-->
+               <streetId>?</streetId>
+               <!--Optional:-->
+               <streetName>?</streetName>
+               <!--Optional:-->
+               <buildingNo>?</buildingNo>
+               <!--Optional:-->
+               <flatNo>?</flatNo>
+               <!--Optional:-->
+               <longitude>?</longitude>
+               <!--Optional:-->
+               <latitude>?</latitude>
+               <!--Optional:-->
+               <description>?</description>
+            </location>
+            <!--Optional:-->
+            <customer>
+               <customerId>?</customerId>
+               <customerType>?</customerType>
+               <!--Optional:-->
+               <firstName>?</firstName>
+               <!--Optional:-->
+               <lastName>?</lastName>
+               <!--Optional:-->
+               <businessName>?</businessName>
+               <!--Optional:-->
+               <phoneNumber1>?</phoneNumber1>
+               <!--Optional:-->
+               <phoneNumber2>?</phoneNumber2>
+               <!--Optional:-->
+               <phoneNumber3>?</phoneNumber3>
+               <!--Optional:-->
+               <email>?</email>
+               <!--Optional:-->
+               <contacts>
+                  <!--1 or more repetitions:-->
+                  <contact>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </contact>
+               </contacts>
+               <!--Optional:-->
+               <location>
+                  <!--Optional:-->
+                  <locationId>?</locationId>
+                  <administrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </administrationUnit>
+                  <!--Optional:-->
+                  <cityId>?</cityId>
+                  <cityName>?</cityName>
+                  <!--Optional:-->
+                  <cityAdministrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </cityAdministrationUnit>
+                  <!--Optional:-->
+                  <streetId>?</streetId>
+                  <!--Optional:-->
+                  <streetName>?</streetName>
+                  <!--Optional:-->
+                  <buildingNo>?</buildingNo>
+                  <!--Optional:-->
+                  <flatNo>?</flatNo>
+                  <!--Optional:-->
+                  <longitude>?</longitude>
+                  <!--Optional:-->
+                  <latitude>?</latitude>
+                  <!--Optional:-->
+                  <description>?</description>
+               </location>
+               <!--Optional:-->
+               <attributes>
+                  <!--1 or more repetitions:-->
+                  <attribute>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </attribute>
+               </attributes>
+            </customer>
+            <!--Optional:-->
+            <additionalRequirements>
+               <!--Optional:-->
+               <executorRole>?</executorRole>
+               <!--Optional:-->
+               <executors>
+                  <!--1 or more repetitions:-->
+                  <executor>
+                     <executorId>?</executorId>
+                  </executor>
+               </executors>
+               <!--Optional:-->
+               <sla>?</sla>
+               <!--Optional:-->
+               <additionalSkills>
+                  <!--1 or more repetitions:-->
+                  <skill>?</skill>
+               </additionalSkills>
+            </additionalRequirements>
+            <!--Optional:-->
+            <slot>
+               <dateFrom>?</dateFrom>
+               <dateTo>?</dateTo>
+            </slot>
+            <!--Optional:-->
+            <rangeStart>?</rangeStart>
+            <!--Optional:-->
+            <notes>
+               <note>?</note>
+            </notes>
+            <!--Optional:-->
+            <additionalTaskTypes>
+               <!--1 or more repetitions:-->
+               <taskType>?</taskType>
+            </additionalTaskTypes>
+            <!--Optional:-->
+            <attributes>
+               <!--1 or more repetitions:-->
+               <attribute>
+                  <name>?</name>
+                  <!--1 or more repetitions:-->
+                  <value>?</value>
+               </attribute>
+            </attributes>
+         </query>
+      </soap1:createWorkOrder>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createWorkOrder"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="successCreateWorkOrder"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>FSMEndpointServiceSoapBinding</con:interface><con:operation>createWorkOrder</con:operation><con:request name="successCreateWorkOrder" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:createWorkOrder>
+         <query>
+            <!--Optional:-->
+            <workOrderId>10</workOrderId>
+            <sourceSystem>1</sourceSystem>
+            <processId>?</processId>
+            <processSignature>?</processSignature>
+            <processCreationDate>?</processCreationDate>
+            <orderType>?</orderType>
+            <orderTechnology>?</orderTechnology>
+            <!--Optional:-->
+            <inventory>
+               <!--Optional:-->
+               <node>
+                  <nodeId>?</nodeId>
+               </node>
+               <!--Optional:-->
+               <devices>
+                  <!--1 or more repetitions:-->
+                  <device>
+                     <deviceId>?</deviceId>
+                     <deviceName>?</deviceName>
+                     <deviceFullName>?</deviceFullName>
+                     <!--Optional:-->
+                     <serialNumber>?</serialNumber>
+                     <!--Optional:-->
+                     <macAddress>?</macAddress>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </device>
+               </devices>
+               <!--Optional:-->
+               <services>
+                  <!--1 or more repetitions:-->
+                  <service>
+                     <serviceId>?</serviceId>
+                     <serviceName>?</serviceName>
+                     <serviceFullName>?</serviceFullName>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </service>
+               </services>
+            </inventory>
+            <location>
+               <!--Optional:-->
+               <locationId>?</locationId>
+               <administrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </administrationUnit>
+               <!--Optional:-->
+               <cityId>?</cityId>
+               <cityName>?</cityName>
+               <!--Optional:-->
+               <cityAdministrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </cityAdministrationUnit>
+               <!--Optional:-->
+               <streetId>?</streetId>
+               <!--Optional:-->
+               <streetName>?</streetName>
+               <!--Optional:-->
+               <buildingNo>?</buildingNo>
+               <!--Optional:-->
+               <flatNo>?</flatNo>
+               <!--Optional:-->
+               <longitude>?</longitude>
+               <!--Optional:-->
+               <latitude>?</latitude>
+               <!--Optional:-->
+               <description>?</description>
+            </location>
+            <!--Optional:-->
+            <customer>
+               <customerId>?</customerId>
+               <customerType>?</customerType>
+               <!--Optional:-->
+               <firstName>?</firstName>
+               <!--Optional:-->
+               <lastName>?</lastName>
+               <!--Optional:-->
+               <businessName>?</businessName>
+               <!--Optional:-->
+               <phoneNumber1>?</phoneNumber1>
+               <!--Optional:-->
+               <phoneNumber2>?</phoneNumber2>
+               <!--Optional:-->
+               <phoneNumber3>?</phoneNumber3>
+               <!--Optional:-->
+               <email>?</email>
+               <!--Optional:-->
+               <contacts>
+                  <!--1 or more repetitions:-->
+                  <contact>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </contact>
+               </contacts>
+               <!--Optional:-->
+               <location>
+                  <!--Optional:-->
+                  <locationId>?</locationId>
+                  <administrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </administrationUnit>
+                  <!--Optional:-->
+                  <cityId>?</cityId>
+                  <cityName>?</cityName>
+                  <!--Optional:-->
+                  <cityAdministrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </cityAdministrationUnit>
+                  <!--Optional:-->
+                  <streetId>?</streetId>
+                  <!--Optional:-->
+                  <streetName>?</streetName>
+                  <!--Optional:-->
+                  <buildingNo>?</buildingNo>
+                  <!--Optional:-->
+                  <flatNo>?</flatNo>
+                  <!--Optional:-->
+                  <longitude>?</longitude>
+                  <!--Optional:-->
+                  <latitude>?</latitude>
+                  <!--Optional:-->
+                  <description>?</description>
+               </location>
+               <!--Optional:-->
+               <attributes>
+                  <!--1 or more repetitions:-->
+                  <attribute>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </attribute>
+               </attributes>
+            </customer>
+            <!--Optional:-->
+            <additionalRequirements>
+               <!--Optional:-->
+               <executorRole>?</executorRole>
+               <!--Optional:-->
+               <executors>
+                  <!--1 or more repetitions:-->
+                  <executor>
+                     <executorId>?</executorId>
+                  </executor>
+               </executors>
+               <!--Optional:-->
+               <sla>?</sla>
+               <!--Optional:-->
+               <additionalSkills>
+                  <!--1 or more repetitions:-->
+                  <skill>?</skill>
+               </additionalSkills>
+            </additionalRequirements>
+            <!--Optional:-->
+            <slot>
+               <dateFrom>?</dateFrom>
+               <dateTo>?</dateTo>
+            </slot>
+            <!--Optional:-->
+            <rangeStart>?</rangeStart>
+            <!--Optional:-->
+            <notes>
+               <note>?</note>
+            </notes>
+            <!--Optional:-->
+            <additionalTaskTypes>
+               <!--1 or more repetitions:-->
+               <taskType>?</taskType>
+            </additionalTaskTypes>
+            <!--Optional:-->
+            <attributes>
+               <!--1 or more repetitions:-->
+               <attribute>
+                  <name>?</name>
+                  <!--1 or more repetitions:-->
+                  <value>?</value>
+               </attribute>
+            </attributes>
+         </query>
+      </soap1:createWorkOrder>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createWorkOrder"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="fetchAvailableAppointmentSlots TestCase" searchProperties="true" id="2331a45b-8e2a-46bc-be5c-4af3b9699470"><con:settings/><con:testStep type="request" name="fetchAvailableAppointmentSlots"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>FSMEndpointServiceSoapBinding</con:interface><con:operation>fetchAvailableAppointmentSlots</con:operation><con:request name="fetchAvailableAppointmentSlots" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:fetchAvailableAppointmentSlots>
+         <query>
+            <sourceSystem>0</sourceSystem>
+            <processId>?</processId>
+            <processCreationDate>?</processCreationDate>
+            <orderType>?</orderType>
+            <orderTechnology>?</orderTechnology>
+            <!--Optional:-->
+            <inventory>
+               <!--Optional:-->
+               <node>
+                  <nodeId>?</nodeId>
+               </node>
+               <!--Optional:-->
+               <devices>
+                  <!--1 or more repetitions:-->
+                  <device>
+                     <deviceId>?</deviceId>
+                     <deviceName>?</deviceName>
+                     <deviceFullName>?</deviceFullName>
+                     <!--Optional:-->
+                     <serialNumber>?</serialNumber>
+                     <!--Optional:-->
+                     <macAddress>?</macAddress>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </device>
+               </devices>
+               <!--Optional:-->
+               <services>
+                  <!--1 or more repetitions:-->
+                  <service>
+                     <serviceId>?</serviceId>
+                     <serviceName>?</serviceName>
+                     <serviceFullName>?</serviceFullName>
+                     <!--Optional:-->
+                     <attributes>
+                        <!--1 or more repetitions:-->
+                        <attribute>
+                           <name>?</name>
+                           <!--1 or more repetitions:-->
+                           <value>?</value>
+                        </attribute>
+                     </attributes>
+                  </service>
+               </services>
+            </inventory>
+            <location>
+               <!--Optional:-->
+               <locationId>?</locationId>
+               <administrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </administrationUnit>
+               <!--Optional:-->
+               <cityId>?</cityId>
+               <cityName>?</cityName>
+               <!--Optional:-->
+               <cityAdministrationUnit>
+                  <!--Optional:-->
+                  <id>?</id>
+                  <level>?</level>
+                  <name>?</name>
+                  <!--Optional:-->
+                  <administrationUnit/>
+               </cityAdministrationUnit>
+               <!--Optional:-->
+               <streetId>?</streetId>
+               <!--Optional:-->
+               <streetName>?</streetName>
+               <!--Optional:-->
+               <buildingNo>?</buildingNo>
+               <!--Optional:-->
+               <flatNo>?</flatNo>
+               <!--Optional:-->
+               <longitude>?</longitude>
+               <!--Optional:-->
+               <latitude>?</latitude>
+               <!--Optional:-->
+               <description>?</description>
+            </location>
+            <!--Optional:-->
+            <customer>
+               <customerId>?</customerId>
+               <customerType>?</customerType>
+               <!--Optional:-->
+               <firstName>?</firstName>
+               <!--Optional:-->
+               <lastName>?</lastName>
+               <!--Optional:-->
+               <businessName>?</businessName>
+               <!--Optional:-->
+               <phoneNumber1>?</phoneNumber1>
+               <!--Optional:-->
+               <phoneNumber2>?</phoneNumber2>
+               <!--Optional:-->
+               <phoneNumber3>?</phoneNumber3>
+               <!--Optional:-->
+               <email>?</email>
+               <!--Optional:-->
+               <contacts>
+                  <!--1 or more repetitions:-->
+                  <contact>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </contact>
+               </contacts>
+               <!--Optional:-->
+               <location>
+                  <!--Optional:-->
+                  <locationId>?</locationId>
+                  <administrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </administrationUnit>
+                  <!--Optional:-->
+                  <cityId>?</cityId>
+                  <cityName>?</cityName>
+                  <!--Optional:-->
+                  <cityAdministrationUnit>
+                     <!--Optional:-->
+                     <id>?</id>
+                     <level>?</level>
+                     <name>?</name>
+                     <!--Optional:-->
+                     <administrationUnit/>
+                  </cityAdministrationUnit>
+                  <!--Optional:-->
+                  <streetId>?</streetId>
+                  <!--Optional:-->
+                  <streetName>?</streetName>
+                  <!--Optional:-->
+                  <buildingNo>?</buildingNo>
+                  <!--Optional:-->
+                  <flatNo>?</flatNo>
+                  <!--Optional:-->
+                  <longitude>?</longitude>
+                  <!--Optional:-->
+                  <latitude>?</latitude>
+                  <!--Optional:-->
+                  <description>?</description>
+               </location>
+               <!--Optional:-->
+               <attributes>
+                  <!--1 or more repetitions:-->
+                  <attribute>
+                     <name>?</name>
+                     <!--1 or more repetitions:-->
+                     <value>?</value>
+                  </attribute>
+               </attributes>
+            </customer>
+            <!--Optional:-->
+            <additionalRequirements>
+               <!--Optional:-->
+               <executorRole>?</executorRole>
+               <!--Optional:-->
+               <executors>
+                  <!--1 or more repetitions:-->
+                  <executor>
+                     <executorId>?</executorId>
+                  </executor>
+               </executors>
+               <!--Optional:-->
+               <sla>?</sla>
+               <!--Optional:-->
+               <additionalSkills>
+                  <!--1 or more repetitions:-->
+                  <skill>?</skill>
+               </additionalSkills>
+            </additionalRequirements>
+            <interval>
+               <dateFrom>?</dateFrom>
+               <dateTo>?</dateTo>
+            </interval>
+            <!--Optional:-->
+            <additionalTaskTypes>
+               <!--1 or more repetitions:-->
+               <taskType>?</taskType>
+            </additionalTaskTypes>
+         </query>
+      </soap1:fetchAvailableAppointmentSlots>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/fetchAvailableAppointmentSlots"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:mockService port="8088" path="/mockFSMEndpointServiceSoapBinding" host="pablo-A6200" name="FSMEndpointServiceSoapBinding MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="fetchAvailableAppointmentSlots" interface="FSMEndpointServiceSoapBinding" operation="fetchAvailableAppointmentSlots"><con:settings/><con:dispatchStyle>QUERY_MATCH</con:dispatchStyle><con:defaultResponse>Success</con:defaultResponse><con:response name="Success" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
    <soap:Header/>
    <soap:Body>
       <soap1:fetchAvailableAppointmentSlotsResponse>
@@ -1547,6 +2191,54 @@
       </soap:Detail>
     </soap:Fault>
   </soap:Body>
-</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/fetchAvailableAppointmentSlotsResponse"/></con:response><con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:query><con:name>sourceSystem 123</con:name><con:query>declare namespace soap='http://www.w3.org/2003/05/soap-envelope';
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/fetchAvailableAppointmentSlotsResponse"/></con:response><con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:query><con:name>sourceSystem 0</con:name><con:query>declare namespace soap='http://www.w3.org/2003/05/soap-envelope';
 declare namespace soap1='http://soap.integration.fsm.comarch.com/';
-//soap1:fetchAvailableAppointmentSlots/query/sourceSystem[text()] </con:query><con:match>0</con:match><con:response>Fail</con:response></con:query></con:dispatchConfig></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/></con:soapui-project>
+//soap1:fetchAvailableAppointmentSlots/query/sourceSystem[text()] </con:query><con:match>0</con:match><con:response>Fail</con:response></con:query></con:dispatchConfig></con:mockOperation><con:mockOperation name="createWorkOrder" interface="FSMEndpointServiceSoapBinding" operation="createWorkOrder"><con:settings/><con:dispatchStyle>QUERY_MATCH</con:dispatchStyle><con:defaultResponse>Success</con:defaultResponse><con:response name="Success" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:createWorkOrderResponse>
+         <return>
+            <workOrderId>1</workOrderId>
+            <!--Optional:-->
+            <workOrderURL>www.google.com</workOrderURL>
+            <!--Optional:-->
+            <tasks>
+               <!--1 or more repetitions:-->
+               <task>
+                  <taskId>1</taskId>
+                  <!--Optional:-->
+                  <status>2</status>
+               </task>
+            </tasks>
+         </return>
+      </soap1:createWorkOrderResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createWorkOrderResponse"/></con:response><con:response name="Fail" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
+  <soap:Body>
+    <soap:Fault>
+      <soap:Code>
+        <soap:Value>soap:Sender</soap:Value>
+        <!--Optional:-->
+        <soap:Subcode>
+          <soap:Value>soap:1</soap:Value>
+          <!--Optional:-->
+          <soap:Subcode/>
+        </soap:Subcode>
+      </soap:Code>
+      <soap:Reason>
+        <!--1 or more repetitions:-->
+        <soap:Text xml:lang="?">Error generado en el servicio mock</soap:Text>
+      </soap:Reason>
+      <!--Optional:-->
+      <soap:Node>?</soap:Node>
+      <!--Optional:-->
+      <soap:Role>?</soap:Role>
+      <!--Optional:-->
+      <soap:Detail>
+        <!--You may enter ANY elements at this point-->
+      </soap:Detail>
+    </soap:Fault>
+  </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createWorkOrderResponse"/></con:response><con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:query><con:name>workOrderId = 0</con:name><con:query>declare namespace soap='http://www.w3.org/2003/05/soap-envelope';
+declare namespace soap1='http://soap.integration.fsm.comarch.com/';
+//soap1:createWorkOrder/query/workOrderId[text()] </con:query><con:match>0</con:match><con:response>Fail</con:response></con:query></con:dispatchConfig></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/></con:soapui-project>

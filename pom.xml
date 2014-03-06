@@ -44,6 +44,12 @@
     </dependency>
     <dependency>
       <groupId>org.switchyard.components</groupId>
+      <artifactId>switchyard-component-test-mixin-http</artifactId>
+      <version>${switchyard.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.switchyard.components</groupId>
       <artifactId>switchyard-component-camel</artifactId>
       <version>${switchyard.version}</version>
     </dependency>

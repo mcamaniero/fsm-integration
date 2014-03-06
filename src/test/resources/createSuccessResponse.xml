@@ -1,0 +1,21 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+   <soap:Header/>
+   <soap:Body>
+      <soap1:createWorkOrderResponse>
+         <return>
+            <workOrderId>1</workOrderId>
+            <!--Optional:-->
+            <workOrderURL>www.google.com</workOrderURL>
+            <!--Optional:-->
+            <tasks>
+               <!--1 or more repetitions:-->
+               <task>
+                  <taskId>1</taskId>
+                  <!--Optional:-->
+                  <status>2</status>
+               </task>
+            </tasks>
+         </return>
+      </soap1:createWorkOrderResponse>
+   </soap:Body>
+</soap:Envelope>

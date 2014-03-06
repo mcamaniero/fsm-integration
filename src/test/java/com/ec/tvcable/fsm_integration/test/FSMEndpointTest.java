@@ -26,6 +26,10 @@ public class FSMEndpointTest extends BaseTest {
 	private static final String FETCH_SUCCESS_RESPONSE = "fetchSuccessResponse.xml";
 	private static final String FETCH_FAULT_REQUEST = "fetchFaultRequest.xml";
 	private static final String FETCH_FAULT_RESPONSE = "fetchFaultResponse.xml";
+	private static final String CREATE_SUCCESS_REQUEST = "createSuccessRequest.xml";
+	private static final String CREATE_SUCCESS_RESPONSE = "createSuccessResponse.xml";
+	private static final String CREATE_FAULT_REQUEST = "createFaultRequest.xml";
+	private static final String CREATE_FAULT_RESPONSE = "createFaultResponse.xml";
 	private static String URL = "http://localhost:8080/fsm-integration/FSMEndpointService";
 
 	private HTTPMixIn httpMixIn;
@@ -35,16 +39,23 @@ public class FSMEndpointTest extends BaseTest {
 
 	@Test
 	public void successFetchAvailableAppointmentSlots() throws Exception {
-
 		httpMixIn.postStringAndTestXML(URL, loadStringXML(FETCH_SUCCESS_REQUEST), loadStringXML(FETCH_SUCCESS_RESPONSE));
-		
 	}
 
 	@Test
 	public void faultFetchAvailableAppointmentSlots() throws Exception {
-
 		httpMixIn.postStringAndTestXML(URL, loadStringXML(FETCH_FAULT_REQUEST), loadStringXML(FETCH_FAULT_RESPONSE));
-		
 	}
+	
+	@Test
+	public void successCreateWorkOrder() throws Exception {
+		httpMixIn.postStringAndTestXML(URL, loadStringXML(CREATE_SUCCESS_REQUEST), loadStringXML(CREATE_SUCCESS_RESPONSE));
+	}
+
+	@Test
+	public void failCreateWorkOrder() throws Exception {
+		httpMixIn.postStringAndTestXML(URL, loadStringXML(CREATE_FAULT_REQUEST), loadStringXML(CREATE_FAULT_RESPONSE));
+	}
+
 
 }

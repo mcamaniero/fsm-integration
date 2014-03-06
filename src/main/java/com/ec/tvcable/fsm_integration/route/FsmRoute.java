@@ -20,7 +20,6 @@ public class FsmRoute extends RouteBuilder {
 	 * required to be a SwitchYard service.
 	 */
 	public void configure() {
-		System.out.println("rutea");
 		from("switchyard://FSMEndpoint")
 			.doTry()
 				.to("switchyard://FSMEndpointTarget")
