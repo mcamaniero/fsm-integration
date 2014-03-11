@@ -57,5 +57,4 @@ public class FSMEndpointTest extends BaseTest {
 		httpMixIn.postStringAndTestXML(URL, loadStringXML(CREATE_FAULT_REQUEST), loadStringXML(CREATE_FAULT_RESPONSE));
 	}
 
-
 }
