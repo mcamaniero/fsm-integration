@@ -6,8 +6,7 @@
 				<env:Value>soap:Sender</env:Value>
 			</env:Code>
 			<env:Reason>
-				<env:Text xml:lang="en-US">Error en la ejecucion del servicio
-				</env:Text>
+				<env:Text xml:lang="es-EC">Error en la ejecucion del servicio</env:Text>
 			</env:Reason>
 			<env:Role>?</env:Role>
 			<env:Detail />

@@ -931,13 +931,13 @@
          </query>
       </soap1:createTask>
    </soap:Body>
-</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createTask"/></con:call></con:operation><con:operation isOneWay="false" action="" name="createWorkOrder" bindingOperationName="createWorkOrder" type="Request-Response" outputName="createWorkOrderResponse" inputName="createWorkOrder" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pablo-A6200:8088/mockFSMEndpointServiceSoapBinding</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createTask"/></con:call></con:operation><con:operation isOneWay="false" action="" name="createWorkOrder" bindingOperationName="createWorkOrder" type="Request-Response" outputName="createWorkOrderResponse" inputName="createWorkOrder" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/fsm-integration/FSMEndpointService</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:soap1="http://soap.integration.fsm.comarch.com/">
    <soap:Header/>
    <soap:Body>
       <soap1:createWorkOrder>
          <query>
             <!--Optional:-->
-            <workOrderId>0</workOrderId>
+            <workOrderId>1</workOrderId>
             <sourceSystem>1</sourceSystem>
             <processId>?</processId>
             <processSignature>?</processSignature>
@@ -2179,7 +2179,7 @@
       </soap:Code>
       <soap:Reason>
         <!--1 or more repetitions:-->
-        <soap:Text xml:lang="?">Error en la ejecucion del servicio</soap:Text>
+        <soap:Text>Error en la ejecucion del servicio</soap:Text>
       </soap:Reason>
       <!--Optional:-->
       <soap:Node>?</soap:Node>
@@ -2227,7 +2227,7 @@ declare namespace soap1='http://soap.integration.fsm.comarch.com/';
       </soap:Code>
       <soap:Reason>
         <!--1 or more repetitions:-->
-        <soap:Text xml:lang="?">Error generado en el servicio mock</soap:Text>
+        <soap:Text>Error generado en el servicio mock</soap:Text>
       </soap:Reason>
       <!--Optional:-->
       <soap:Node>?</soap:Node>
@@ -2239,6 +2239,8 @@ declare namespace soap1='http://soap.integration.fsm.comarch.com/';
       </soap:Detail>
     </soap:Fault>
   </soap:Body>
-</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createWorkOrderResponse"/></con:response><con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:query><con:name>workOrderId = 0</con:name><con:query>declare namespace soap='http://www.w3.org/2003/05/soap-envelope';
+</soap:Envelope>
+
+]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://soap.integration.fsm.comarch.com/FSMEndpoint/createWorkOrderResponse"/></con:response><con:dispatchConfig xsi:type="con:MockOperationQueryMatchDispatch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:query><con:name>workOrderId = 0</con:name><con:query>declare namespace soap='http://www.w3.org/2003/05/soap-envelope';
 declare namespace soap1='http://soap.integration.fsm.comarch.com/';
-//soap1:createWorkOrder/query/workOrderId[text()] </con:query><con:match>0</con:match><con:response>Fail</con:response></con:query></con:dispatchConfig></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/></con:soapui-project>
+//soap1:createWorkOrder/query/workOrderId[text()] </con:query><con:match>0</con:match><con:response>Fail</con:response></con:query></con:dispatchConfig></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/><con:sensitiveInformation/></con:soapui-project>

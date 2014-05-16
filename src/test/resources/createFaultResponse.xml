@@ -6,8 +6,7 @@
 				<env:Value>soap:Sender</env:Value>
 			</env:Code>
 			<env:Reason>
-				<env:Text xml:lang="en-US">Error generado en el servicio mock
-				</env:Text>
+				<env:Text xml:lang="es-EC">Error generado en el servicio mock</env:Text>
 			</env:Reason>
 			<env:Role>?</env:Role>
 			<env:Detail />

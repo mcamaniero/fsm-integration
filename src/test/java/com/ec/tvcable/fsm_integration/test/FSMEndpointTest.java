@@ -44,7 +44,8 @@ public class FSMEndpointTest extends BaseTest {
 
 	@Test
 	public void faultFetchAvailableAppointmentSlots() throws Exception {
-		httpMixIn.postStringAndTestXML(URL, loadStringXML(FETCH_FAULT_REQUEST), loadStringXML(FETCH_FAULT_RESPONSE));
+		System.out.println(httpMixIn.postFile(URL, "src/test/resources/" + FETCH_FAULT_REQUEST));
+		httpMixIn.postStringAndTestXML(URL, loadStringXML(FETCH_FAULT_REQUEST), loadStringXML(FETCH_FAULT_RESPONSE) );
 	}
 	
 	@Test
