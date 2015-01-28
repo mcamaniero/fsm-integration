@@ -1,0 +1,25 @@
+2014-04-03 16:36:01,060 WARN  [SoapUI] Missing folder [C:\Users\mcamañiero\workspace\fsm-integration\.\ext] for external libraries
+2014-04-03 16:36:01,341 INFO  [DefaultSoapUICore] initialized soapui-settings from [C:\Users\mcamañiero\soapui-settings.xml]
+2014-04-03 16:36:01,994 INFO  [WsdlProject] Loaded project from [file:/C:/Users/mcamañiero/workspace/fsm-integration/soapui/fsm-endpoint-soapui-project.xml]
+2014-04-03 16:36:02,366 INFO  [SoapUIMockServiceRunner] Running all MockServices in project [fsm-endpoint]
+2014-04-03 16:36:02,371 INFO  [SoapUIMockServiceRunner] Press any key to terminate
+2014-04-03 16:36:02,653 INFO  [SchemaUtils] Added default schema from file:/C:/Users/mcamañiero/.m2/repository/com/smartbear/soapui/soapui/4.6.1/soapui-4.6.1.jar!/com/eviware/soapui/resources/xsds/xop.xsd with targetNamespace http://www.w3.org/2004/08/xop/include
+2014-04-03 16:36:02,697 INFO  [SchemaUtils] Added default schema from file:/C:/Users/mcamañiero/.m2/repository/com/smartbear/soapui/soapui/4.6.1/soapui-4.6.1.jar!/com/eviware/soapui/resources/xsds/XMLSchema.xsd with targetNamespace http://www.w3.org/2001/XMLSchema
+2014-04-03 16:36:02,708 INFO  [SchemaUtils] Added default schema from file:/C:/Users/mcamañiero/.m2/repository/com/smartbear/soapui/soapui/4.6.1/soapui-4.6.1.jar!/com/eviware/soapui/resources/xsds/xml.xsd with targetNamespace http://www.w3.org/XML/1998/namespace
+2014-04-03 16:36:02,720 INFO  [SchemaUtils] Added default schema from file:/C:/Users/mcamañiero/.m2/repository/com/smartbear/soapui/soapui/4.6.1/soapui-4.6.1.jar!/com/eviware/soapui/resources/xsds/swaref.xsd with targetNamespace http://ws-i.org/profiles/basic/1.1/xsd
+2014-04-03 16:36:02,731 INFO  [SchemaUtils] Added default schema from file:/C:/Users/mcamañiero/.m2/repository/com/smartbear/soapui/soapui/4.6.1/soapui-4.6.1.jar!/com/eviware/soapui/resources/xsds/xmime200505.xsd with targetNamespace http://www.w3.org/2005/05/xmlmime
+2014-04-03 16:36:02,742 INFO  [SchemaUtils] Added default schema from file:/C:/Users/mcamañiero/.m2/repository/com/smartbear/soapui/soapui/4.6.1/soapui-4.6.1.jar!/com/eviware/soapui/resources/xsds/xmime200411.xsd with targetNamespace http://www.w3.org/2004/11/xmlmime
+2014-04-03 16:36:02,754 INFO  [SchemaUtils] Added default schema from file:/C:/Users/mcamañiero/.m2/repository/com/smartbear/soapui/soapui/4.6.1/soapui-4.6.1.jar!/com/eviware/soapui/resources/xsds/soapEnvelope.xsd with targetNamespace http://schemas.xmlsoap.org/soap/envelope/
+2014-04-03 16:36:02,775 INFO  [SchemaUtils] Added default schema from file:/C:/Users/mcamañiero/.m2/repository/com/smartbear/soapui/soapui/4.6.1/soapui-4.6.1.jar!/com/eviware/soapui/resources/xsds/soapEncoding.xsd with targetNamespace http://schemas.xmlsoap.org/soap/encoding/
+2014-04-03 16:36:02,792 INFO  [SchemaUtils] Added default schema from file:/C:/Users/mcamañiero/.m2/repository/com/smartbear/soapui/soapui/4.6.1/soapui-4.6.1.jar!/com/eviware/soapui/resources/xsds/soapEnvelope12.xsd with targetNamespace http://www.w3.org/2003/05/soap-envelope
+2014-04-03 16:36:02,811 INFO  [SchemaUtils] Added default schema from file:/C:/Users/mcamañiero/.m2/repository/com/smartbear/soapui/soapui/4.6.1/soapui-4.6.1.jar!/com/eviware/soapui/resources/xsds/soapEncoding12.xsd with targetNamespace http://www.w3.org/2003/05/soap-encoding
+2014-04-03 16:36:02,826 INFO  [SchemaUtils] Loading schema types from [file:/home/pablo/switchyard_workspace/fsm-integration/src/main/resources/wsdl/fsm-endpoint.wsdl]
+2014-04-03 16:36:02,836 INFO  [SchemaUtils] Getting schema file:/home/pablo/switchyard_workspace/fsm-integration/src/main/resources/wsdl/fsm-endpoint.wsdl
+2014-04-03 16:36:03,264 INFO  [WsdlMockRunner] Mounted WSDL for interface [FSMEndpointServiceSoapBinding] at [/mockFSMEndpointServiceSoapBinding?WSDL]
+2014-04-03 16:36:03,296 INFO  [jetty] Logging to com.eviware.soapui.support.log.JettyLogger@72da2335 via com.eviware.soapui.support.log.JettyLogger
+2014-04-03 16:36:03,323 INFO  [jetty] jetty-6.1.26
+2014-04-03 16:36:03,343 INFO  [jetty] Started JettyMockEngine$SoapUIConnector@0.0.0.0:8088
+2014-04-03 16:36:03,343 INFO  [JettyMockEngine] Started mockService [FSMEndpointServiceSoapBinding MockService] on port [8088] at path [/mockFSMEndpointServiceSoapBinding]
+2014-04-03 16:36:03,354 INFO  [SoapUIMockServiceRunner] MockService started on port 8088 at path [/mockFSMEndpointServiceSoapBinding]
+2014-04-03 16:36:03,359 INFO  [SoapUIMockServiceRunner] Started 1 runner
+2014-04-03 16:36:03,366 INFO  [SoapUIMockServiceRunner] time taken: 990ms
